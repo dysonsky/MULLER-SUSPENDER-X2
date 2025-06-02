@@ -29,3 +29,6 @@ A simple WhatsApp bot using **Baileys** that sends a 3-button menu to admin user
 ```bash
 git clone https://github.com/dysonsky/MULLER-SUSPENDER-X2.git
 cd MULLER-SUSPENDER-X2
+## 🚀 Deploy to Heroku
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dysonsky/MULLER-SUSPENDER-X2)
