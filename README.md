@@ -1,34 +1,267 @@
-# 🤖 MULLER SUSPENDER X2 - WhatsApp Bot
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MULLER Portfolio</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100vh;
+      background: url('https://files.catbox.moe/xa9kzj.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: auto;
+      text-align: center;
+      margin: 0;
+    }
 
-A simple WhatsApp bot using **Baileys** that sends a 3-button menu to admin users and replies to button clicks.
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid white;
+      margin-top: 20px;
+      animation: rotate 10s linear infinite;
+      object-fit: cover;
+      background: #222;
+    }
 
----
+    .profile-img-secondary {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid #00c9ff;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      animation: rotate 14s linear infinite reverse;
+      object-fit: cover;
+      background: #333;
+    }
 
-## 👨‍💻 Admin Numbers
+    .typing-text {
+      font-size: 3em;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #fff;
+      background: linear-gradient(270deg, #ff416c, #ff4b2b, #00c9ff, #92fe9d);
+      background-size: 800% 800%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rotate-text 6s ease infinite;
+      cursor: pointer;
+    }
 
-- `254705101667`
-- `254114468030`
+    h2 {
+      font-size: 1.8em;
+      margin: 10px;
+      animation: rotate-text 8s linear infinite;
+      background: linear-gradient(270deg, #ff416c, #ff4b2b, #00c9ff, #92fe9d);
+      background-size: 800% 800%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      cursor: pointer;
+    }
 
----
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
 
-## 📦 Features
+    .project-btn {
+      padding: 15px 25px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1em;
+      cursor: pointer;
+      background: linear-gradient(90deg, #ff8a00, #e52e71, #9b00ff);
+      color: white;
+      animation: colorShift 4s infinite;
+      transition: transform 0.3s;
+    }
 
-- 3 Buttons Menu:
-  - 👑 OWNER → Replies with owner contact
-  - 📦 SCRIPT BUYER → Replies with buyer contact
-  - 👥 GRUP MENU → Sends group invite link
-- Admin-only access
-- Easy setup
+    .project-btn:hover {
+      transform: scale(1.1);
+    }
 
----
+    .whatsapp-btn, .control-btn {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
 
-## 🚀 Setup Instructions
+    .whatsapp-btn {
+      background: #25D366;
+    }
 
-### 1. Clone the Repository
+    .control-btn {
+      background: #444;
+      margin: 5px;
+    }
 
-```bash
-git clone https://github.com/dysonsky/MULLER-SUSPENDER-X2.git
-cd MULLER-SUSPENDER-X2
-## 🚀 Deploy to Heroku
+    .volume-slider {
+      width: 300px;
+      height: 20px;
+      margin-top: 20px;
+      -webkit-appearance: none;
+      background: linear-gradient(270deg, #ff416c, #ff4b2b, #00c9ff, #92fe9d);
+      background-size: 300% 300%;
+      border-radius: 10px;
+      animation: colorShiftFast 2s linear infinite;
+      outline: none;
+      cursor: pointer;
+    }
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dysonsky/MULLER-SUSPENDER-X2)
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 30px;
+      width: 30px;
+      background: white;
+      border-radius: 50%;
+      border: 2px solid #000;
+      cursor: pointer;
+      box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    }
+
+    .volume-slider::-moz-range-thumb {
+      height: 30px;
+      width: 30px;
+      background: white;
+      border-radius: 50%;
+      border: 2px solid #000;
+      cursor: pointer;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes rotate-text {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes colorShift {
+      0% { filter: hue-rotate(0deg); }
+      100% { filter: hue-rotate(360deg); }
+    }
+
+    @keyframes colorShiftFast {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @media (max-width: 600px) {
+      .typing-text {
+        font-size: 1.8em;
+      }
+      h2 {
+        font-size: 1.2em;
+      }
+      .project-btn {
+        padding: 10px 15px;
+        font-size: 1em;
+      }
+      .profile-img,
+      .profile-img-secondary {
+        width: 90px;
+        height: 90px;
+      }
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      background: rgba(0, 0, 0, 0.6);
+      width: 100%;
+      font-size: 1em;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <!-- Primary Profile Image -->
+  <img src="https://files.catbox.moe/xa9kzj.jpg" alt="MULLER portfolio artwork" class="profile-img" onclick="speak('MULLER portfolio artwork')">
+  <!-- Secondary Profile Image -->
+  <img src="https://files.catbox.moe/1rqh3x.jpg" alt="MULLER stylized portrait" class="profile-img-secondary" onclick="speak('MULLER stylized portrait')">
+
+  <h1 class="typing-text" onclick="speak('MULLER-SUSPENDER')"></h1>
+  <h2 onclick="speak('jamestech Muller-suspender Portfolio. Edited and credited to MULLER')">jamestech Muller-suspender Portfolio — Edited and credited to MULLER</h2>
+
+  <div class="projects">
+    <button class="project-btn" onclick="window.open('https://example.com/project1', '_blank'); speak('Project One')">Project One</button>
+    <button class="project-btn" onclick="window.open('https://example.com/project2', '_blank'); speak('Project Two')">Project Two</button>
+    <button class="project-btn" onclick="window.open('https://example.com/project3', '_blank'); speak('Project Three')">Project Three</button>
+    <button class="project-btn" onclick="window.open('https://example.com/project4', '_blank'); speak('Project Four')">Project Four</button>
+    <button class="project-btn" onclick="window.open('https://example.com/project5', '_blank'); speak('Project Five')">Project Five</button>
+    <button class="project-btn" onclick="window.open('https://example.com/project6', '_blank'); speak('Project Six')">Project Six</button>
+  </div>
+
+  <button class="whatsapp-btn" onclick="window.open('https://whatsapp.com/channel/your_channel_id', '_blank'); speak('Join WhatsApp Channel')">
+    Join WhatsApp Channel
+  </button>
+
+  <input type="range" min="0" max="1" step="0.01" value="1" class="volume-slider" id="volumeSlider" onchange="setVolume(this.value)">
+
+  <button class="control-btn" onclick="togglePlay()">Pause/Resume</button>
+
+  <audio id="bg-music" autoplay loop>
+    <source src="https://files.catbox.moe/r93e2e.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function speak(text) {
+      const msg = new SpeechSynthesisUtterance(text);
+      msg.lang = 'en-US';
+      window.speechSynthesis.speak(msg);
+    }
+
+    const text = "MULLER-SUSPENDER";
+    const typingElement = document.querySelector(".typing-text");
+    let index = 0;
+    function typeEffect() {
+      if (index < text.length) {
+        typingElement.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 150);
+      }
+    }
+    typeEffect();
+
+    const music = document.getElementById("bg-music");
+
+    function togglePlay() {
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+
+    function setVolume(value) {
+      music.volume = parseFloat(value);
+      speak(`Volume ${Math.round(value * 100)} percent`);
+    }
+  </script>
+
+  <footer>
+    © 2025 Tutorial Portfolio with MULLER — Thank you!
+  </footer>
+</body>
+</html>
